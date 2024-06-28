@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Button, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import Geolocation from 'react-native-geolocation-service';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { Button, Input, Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const App = () => {
   const [region, setRegion] = useState({
@@ -32,9 +33,9 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Enter a specific location:</Text>
+      <Text style={styles.header}>Select Location</Text>
       <GooglePlacesAutocomplete
-        placeholder="Search"
+        placeholder="Enter a specific location"
         onPress={handleLocationSelected}
         query={{
           key: 'YOUR_GOOGLE_API_KEY',
@@ -43,10 +44,15 @@ const App = () => {
         styles={{
           textInputContainer: styles.inputContainer,
           textInput: styles.textInput,
+          predefinedPlacesDescription: {
+            color: '#1faadb',
+          },
         }}
+        renderLeftButton={() => <Icon name="search" size={20} color="#000" style={styles.searchIcon} />}
       />
+      <Divider style={styles.divider} />
       <Text style={styles.or}>OR</Text>
-      <Text style={styles.label}>Pick a point:</Text>
+      <Text style={styles.label}>Pick a point on the map:</Text>
       <MapView
         style={styles.map}
         region={region}
@@ -62,40 +68,64 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  label: {
-    fontSize: 16,
-    marginVertical: 10,
-  },
-  inputContainer: {
-    width: '100%',
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 5,
-  },
-  textInput: {
-    fontSize: 16,
-  },
-  or: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginVertical: 10,
-  },
-  map: {
-    width: '100%',
-    height: 300,
-  },
-  locationContainer: {
-    marginVertical: 10,
-  },
-  locationText: {
-    fontSize: 16,
-  },
-});
+    container: {
+      flex: 1,
+      padding: 20,
+      backgroundColor: '#f8f9fa',
+    },
+    header: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 20,
+      textAlign: 'center',
+      color: '#2c3e50',
+    },
+    inputContainer: {
+      backgroundColor: '#e9ecef',
+      borderRadius: 10,
+      padding: 5,
+      marginBottom: 10,
+    },
+    textInput: {
+      fontSize: 16,
+      backgroundColor: '#e9ecef',
+    },
+    searchIcon: {
+      marginTop: 12,
+      marginLeft: 10,
+    },
+    divider: {
+      backgroundColor: '#2c3e50',
+      marginVertical: 20,
+    },
+    or: {
+      fontSize: 18,
+      textAlign: 'center',
+      marginVertical: 10,
+      color: '#2c3e50',
+    },
+    label: {
+      fontSize: 18,
+      marginBottom: 10,
+      color: '#2c3e50',
+    },
+    map: {
+      width: '100%',
+      height: 300,
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: '#2c3e50',
+    },
+    locationContainer: {
+      marginTop: 20,
+      padding: 10,
+      backgroundColor: '#e9ecef',
+      borderRadius: 10,
+    },
+    locationText: {
+      fontSize: 16,
+      color: '#2c3e50',
+    },
+  });
 
-export default App;
+export default homeScreen;
