@@ -5,7 +5,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { Button, Input, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const App = () => {
+const HomeScreen = () => {
   const [region, setRegion] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -38,7 +38,7 @@ const App = () => {
         placeholder="Enter a specific location"
         onPress={handleLocationSelected}
         query={{
-          key: 'YOUR_GOOGLE_API_KEY',
+          key: 'AIzaSyCHHwlmsWjiuDyG1jV99th8Jy7Bm00jE4w',
           language: 'en',
         }}
         styles={{
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default homeScreen;
+export default HomeScreen;
