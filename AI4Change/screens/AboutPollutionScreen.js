@@ -15,7 +15,7 @@ const AboutPollutionScreen = ({ navigation }) => {
   }
 
   return (
-    <ImageBackground source={require('../assets/bg4.jpeg')} style={styles.backgroundImage}>
+    <ImageBackground source={require('../assets/bg4.jpg')} style={styles.backgroundImage}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <Text style={styles.header}>About Pollution</Text>

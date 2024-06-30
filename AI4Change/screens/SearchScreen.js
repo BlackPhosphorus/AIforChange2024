@@ -43,7 +43,7 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ImageBackground source={require('../assets/bg4.jpeg')} style={styles.backgroundImage}>
+      <ImageBackground source={require('../assets/bg4.jpg')} style={styles.backgroundImage}>
         <LinearGradient colors={['rgba(0,0,0,0.5)', 'transparent']} style={styles.gradient}>
           <View style={styles.container}>
             <View style={styles.inputContainer}>

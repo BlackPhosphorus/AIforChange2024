@@ -68,7 +68,8 @@ const AboutAIScreen = ({ navigation }) => {
           <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => navigation.goBack()}>
           <Text style={commonStyles.backButtonText}>Back</Text>
         </TouchableOpacity>
-      </View>
+        </ScrollView>
+      </View>        
     </ImageBackground>
   );
 };
