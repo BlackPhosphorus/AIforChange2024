@@ -89,7 +89,7 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
           <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>handleSearch(currentDetails)}>
             <Text style={commonStyles.backButtonText}>Search</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>navigation.navigate("AnalyticsScreen",{lat:latitude, lng:longitude})}>
+          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>navigation.navigate("AnalyticsScreen",{lat:latitude, lng:longitude,})}>
             <Text style={commonStyles.backButtonText}>Confirm</Text>
           </TouchableOpacity>
           <MapView style={styles.map} region={region}>

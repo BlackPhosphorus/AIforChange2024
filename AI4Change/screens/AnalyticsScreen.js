@@ -4,7 +4,7 @@ import { LineChart } from 'react-native-chart-kit';
 import axios from 'axios';
 import { IP_ADDRESS } from '../config.js';
 
-const MyLineChart = () => {
+const MyLineChart = ({navigation, route}) => {
   const { lat, lng } = route.params;
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
