@@ -14,23 +14,20 @@ import { IP_ADDRESS } from './config';
 const Stack = createStackNavigator();
 
 const App = () => {
+  console.log(`http://${IP_ADDRESS}/data`);
 
-    console.log(`http://${IP_ADDRESS}/data`);
+  var bodyFormData = new FormData();
+  bodyFormData.append('LonLatData', JSON.stringify([90.0, 25.0]));
 
-    var bodyFormData = new FormData();
-    bodyFormData.append('userName', 'Fred');
-
-    axios({
+  axios({
       method: "post",
       url: `http://${IP_ADDRESS}/data`,
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
-    })
+  })
       .then(function (response) {
-        console.log(response.data);
+      console.log(response.data);
       })
-
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Search"
