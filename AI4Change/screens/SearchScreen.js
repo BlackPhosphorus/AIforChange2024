@@ -27,17 +27,19 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
   }
 
   const handleSearch = (data, details) => {
-    const { lat, lng } = details.geometry.location;
-    setRegion({
-      latitude: lat,
-      longitude: lng,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    });
-    setMarker({
-      latitude: lat,
-      longitude: lng,
-    });
+    if (details) {
+      const { lat, lng } = details.geometry.location;
+      setRegion({
+        latitude: lat,
+        longitude: lng,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+      setMarker({
+        latitude: lat,
+        longitude: lng,
+      });
+    }
   };
 
   return (
@@ -47,12 +49,12 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
           <View style={styles.inputContainer}>
             <GooglePlacesAutocomplete
               placeholder="Enter location"
-              minLength={2} 
-              fetchDetails={true} 
+              minLength={2}
+              fetchDetails={true}
               onPress={handleSearch}
               query={{
                 key: GOOGLE_MAPS_API_KEY,
-                language: 'en', 
+                language: 'en',
               }}
               styles={{
                 textInputContainer: styles.textInputContainer,
@@ -61,8 +63,8 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
                   color: '#1faadb',
                 },
               }}
-              debounce={200} 
-              enablePoweredByContainer={false} 
+              debounce={200}
+              enablePoweredByContainer={false}
             />
           </View>
           <MapView style={styles.map} region={region}>
