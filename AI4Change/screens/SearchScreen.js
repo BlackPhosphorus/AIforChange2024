@@ -39,6 +39,8 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
         latitude: lat,
         longitude: lng,
       });
+    } else {
+      console.error('Details not fetched');
     }
   };
 
@@ -46,27 +48,22 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ImageBackground source={require('../assets/bg4.jpg')} style={styles.backgroundImage}>
         <View style={styles.container}>
-          <View style={styles.inputContainer}>
-            <GooglePlacesAutocomplete
-              placeholder="Enter location"
-              minLength={2}
-              fetchDetails={true}
-              onPress={handleSearch}
-              query={{
-                key: GOOGLE_MAPS_API_KEY,
-                language: 'en',
-              }}
-              styles={{
-                textInputContainer: styles.textInputContainer,
-                textInput: styles.textInput,
-                predefinedPlacesDescription: {
-                  color: '#1faadb',
-                },
-              }}
-              debounce={200}
-              enablePoweredByContainer={false}
-            />
-          </View>
+        <View style={styles.container}>
+      <GooglePlacesAutocomplete
+        placeholder="Enter location"
+        fetchDetails={true}
+        query={{
+          key: GOOGLE_MAPS_API_KEY,
+          language: 'en',
+        }}
+        styles={{
+          textInputContainer: styles.textInputContainer,
+          textInput: styles.textInput,
+        }}
+        debounce={200}
+        onFail={(error) => console.error(error)}
+      />
+    </View>
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
           </MapView>
