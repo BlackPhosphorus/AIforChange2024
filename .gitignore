@@ -35,3 +35,4 @@ yarn-error.*
 *.tsbuildinfo
 AI4Change/assets/bg3.mp4
 AI4Change/assets/bg2.mp4
+AI4Change/config.js

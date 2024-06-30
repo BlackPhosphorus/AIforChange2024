@@ -17,22 +17,18 @@ const App = () => {
 
     console.log(`http://${IP_ADDRESS}/data`);
 
-    axios.get(`http://${IP_ADDRESS}/data`)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-          if (error.response) {
-            // The server responded with a status code outside the 2xx range
-            console.log('Error response:', error.response);
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.log('Error request:', error.request);
-          } else {
-            // Something happened in setting up the request that triggered an error
-            console.log('Error message:', error.message);
-          }
-        });
+    var bodyFormData = new FormData();
+    bodyFormData.append('userName', 'Fred');
+
+    axios({
+      method: "post",
+      url: `http://${IP_ADDRESS}/data`,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        console.log(response.data);
+      })
 
 
   return (

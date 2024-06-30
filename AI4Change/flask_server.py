@@ -17,7 +17,13 @@ tropopause_data = ujson.load(open('data/tropopause_temp.json'))
 
 @app.route('/data', methods=['GET'])
 def get_data():
+    print(request.form)
     return jsonify({"hi" : wtr_content_data["90.0_25.0"][0]})
+
+
+@app.route('/data', methods=['POST'])
+def process_data():
+    return jsonify({"your name is" : request.form["userName"]})
 
 
 if __name__ == "__main__":
