@@ -59,15 +59,27 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
         styles={{
           textInputContainer: styles.textInputContainer,
           textInput: styles.textInput,
+          row: styles.row,
         }}
         debounce={200}
+        renderRow={(rowData) => {
+          const title = rowData.structured_formatting.main_text;
+          const address = rowData.structured_formatting.secondary_text;
+          return (
+           <View>
+            <Text style={{ fontSize: 14 }}>{title}</Text>
+            <Text style={{ fontSize: 14 }}>{address}</Text>
+           </View>
+           );
+          }}
+
         onFail={(error) => console.error(error)}
       />
     </View>
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
           </MapView>
-          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => showLoadingScreen(navigation, 'Home')}>
+          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => navigation.goBack()}>
             <Text style={commonStyles.backButtonText}>Back</Text>
           </TouchableOpacity>
         </View>
@@ -92,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 10,
-    width: '90%',
+    width: '95%',
     elevation: 5,
     zIndex: 1,
   },
@@ -100,6 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     borderTopWidth: 0,
     borderBottomWidth: 0,
+    width:'95%',
   },
   textInput: {
     height: 40,
@@ -112,6 +125,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     zIndex: 0,
   },
+  row:{
+    width:'95%',
+    
+  }
 });
 
 export default SearchScreen;
