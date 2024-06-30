@@ -169,7 +169,16 @@ const MyLineChart = ({navigation, route}) => {
               marginLeft: 6,
             }}
           />
-          
+          <Text style={{ 
+              textAlign: 'center', 
+              fontSize: 24, 
+              fontWeight: 'bold', 
+              paddingVertical: 20, 
+              color: '#0000ff' 
+            }}>
+              Using metrics and information from the relative humidity, sea level pressure, surface pressure, tropopause temperature, wind, water content, and air pressure
+              in your area, we find that
+            </Text>
           </>
         ) : null}
       </View>
