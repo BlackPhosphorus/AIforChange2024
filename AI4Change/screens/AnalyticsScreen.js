@@ -168,6 +168,7 @@ const MyLineChart = () => {
               marginLeft: 6,
             }}
           />
+          
           </>
         ) : null}
       </View>
