@@ -17,7 +17,8 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
   });
   const [marker, setMarker] = useState(null);
   const [currentDetails, setCurrentDetails] = useState(null);
-
+  const [latitude, setlatitude] = useState(null);
+  const [longitude,setlongitude] = useState(null);
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
@@ -31,6 +32,8 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
     const handleSearch = (details) => {
     if (details) {
       const { lat, lng } = details.geometry.location;
+      setlatitude(lat);
+      setlongitude(lng);
       setRegion({
         latitude: lat,
         longitude: lng,
