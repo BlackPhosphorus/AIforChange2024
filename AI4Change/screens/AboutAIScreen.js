@@ -18,7 +18,7 @@ const AboutAIScreen = ({ navigation }) => {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.headerContainer}>
-            <Text style={styles.header}>About WeatherWise AI and App</Text>
+            <Text style={styles.header}>About WeatherWise AI</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.text}>
