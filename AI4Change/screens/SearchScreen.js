@@ -99,7 +99,7 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
           </MapView>
-          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => navigation.goBack()}>
+          <TouchableOpacity style={[commonStyles.backButtonContainer, {marginTop:4}]} onPress={() => navigation.goBack()}>
             <Text style={commonStyles.backButtonText}>Back</Text>
           </TouchableOpacity>
         </View>
