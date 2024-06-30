@@ -30,7 +30,7 @@ const App = () => {
       })
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Search"
+      <Stack.Navigator 
       screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Loading" component={LoadingScreen} />
