@@ -10,7 +10,7 @@ CORS(app)
 
 @app.route('/data', methods=['GET'])
 def get_data():
-    f = open('wtr_content.json')
+    f = open('data/wtr_content.json')
 
     data = json.load(f)
 
