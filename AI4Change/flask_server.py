@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import torch
 import json
 from flask_cors import CORS
 import ujson
