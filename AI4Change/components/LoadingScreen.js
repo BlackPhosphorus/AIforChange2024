@@ -5,7 +5,7 @@ const LoadingScreen = ({ navigation, route }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace(route.params.screen, route.params.params);
-    }, 1000); 
+    }, 1000); // 1 second delay
 
     return () => clearTimeout(timer);
   }, [navigation, route.params.screen, route.params.params]);
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
   image: {
     width: 100,
     height: 100,
     marginBottom: 20,
-    animation: 'spin 1s linear infinite', 
+    animation: 'spin 1s linear infinite',
   },
   loadingText: {
     fontSize: 18,
