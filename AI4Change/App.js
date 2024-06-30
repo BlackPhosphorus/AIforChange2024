@@ -9,12 +9,15 @@ import LoadingScreen from './components/LoadingScreen';
 import { Video } from 'expo-av';
 import { View, StyleSheet } from 'react-native';
 import axios from 'axios';
+import { IP_ADDRESS } from './config';
 
 const Stack = createStackNavigator();
 
 const App = () => {
 
-    axios.get('http://10.0.0.156:5000/data')
+    console.log(`http://${IP_ADDRESS}/data`);
+
+    axios.get(`http://${IP_ADDRESS}/data`)
         .then(response => {
             console.log(response.data);
         })
