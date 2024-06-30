@@ -28,13 +28,13 @@ def process_data():
     search = f"{lat_coords[lat_index]}_{lon_coords[lon_index]}"
 
     data = {
-        "Water Content" : wtr_content_data[search][0],
-        "Air Temperature" : air_temps_data[search][0],
-        "Sea Level" : sea_level_data[search][0],
-        "Surface Pressure" : surface_pressure_data[search][0],
-        "U Wind" : u_wind_data[search][0],
-        "Tropopause Temperature" : tropopause_data[search][0],
-        "Relative Humidity" : humidity_data[search][0],
+        "Water Content" : wtr_content_data[search],
+        "Air Temperature" : air_temps_data[search],
+        "Sea Level" : sea_level_data[search],
+        "Surface Pressure" : surface_pressure_data[search],
+        "U Wind" : u_wind_data[search],
+        "Tropopause Temperature" : tropopause_data[search],
+        "Relative Humidity" : humidity_data[search],
     }
 
     return jsonify(data)
