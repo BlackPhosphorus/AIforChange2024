@@ -1,57 +1,26 @@
-import React, { useRef } from 'react';
+import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import AboutAIScreen from './screens/AboutAIScreen';
 import AboutPollutionScreen from './screens/AboutPollutionScreen';
-import { Video } from 'expo-av';
-import { View, StyleSheet } from 'react-native';
+import LoadingScreen from './components/LoadingScreen';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  const videoRef = useRef(null);
-
+const App = () => {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Video
-          ref={videoRef}
-          source={require('./assets/bg3.mp4')}
-          rate={1.0}
-          volume={1.0}
-          isMuted={true}
-          resizeMode="cover"
-          shouldPlay
-          isLooping
-          style={StyleSheet.absoluteFillObject}
-        />
-        <View style={styles.overlay}>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Search" component={SearchScreen} />
-            <Stack.Screen name="AboutAI" component={AboutAIScreen} />
-            <Stack.Screen name="AboutPollution" component={AboutPollutionScreen} />
-          </Stack.Navigator>
-        </View>
-      </View>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="AboutAI" component={AboutAIScreen} />
+        <Stack.Screen name="AboutPollution" component={AboutPollutionScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-  },
-  backgroundVideo: {
-    ...StyleSheet.absoluteFillObject,
-  },
-});
-
+export default App;
