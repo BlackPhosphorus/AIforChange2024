@@ -31,7 +31,6 @@ const App = () => {
           }
         });
 
-  const videoRef = useRef(null);
 
   return (
     <NavigationContainer>
