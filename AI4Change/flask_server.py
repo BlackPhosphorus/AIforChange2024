@@ -30,7 +30,7 @@ def process_data():
     data = {
         "Water Content" : wtr_content_data[search],
         "Air Temperature" : air_temps_data[search],
-        "Sea Level" : sea_level_data[search],
+        "Sea Level" : [x / -10000 for x in sea_level_data[search]],
         "Surface Pressure" : surface_pressure_data[search],
         "U Wind" : u_wind_data[search],
         "Tropopause Temperature" : tropopause_data[search],
