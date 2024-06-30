@@ -6,6 +6,7 @@ import SearchScreen from './screens/SearchScreen';
 import AboutAIScreen from './screens/AboutAIScreen';
 import AboutPollutionScreen from './screens/AboutPollutionScreen';
 import LoadingScreen from './components/LoadingScreen';
+import MyLineChart from './screens/AnalyticsScreen';
 import { Video } from 'expo-av';
 import { View, StyleSheet } from 'react-native';
 import axios from 'axios';
@@ -14,20 +15,7 @@ import { IP_ADDRESS } from './config';
 const Stack = createStackNavigator();
 
 const App = () => {
-  console.log(`http://${IP_ADDRESS}/data`);
-
-  var bodyFormData = new FormData();
-  bodyFormData.append('LonLatData', JSON.stringify([34.2, 22.9]));
-
-  axios({
-      method: "post",
-      url: `http://${IP_ADDRESS}/data`,
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-  })
-      .then(function (response) {
-      console.log(response.data);
-      })
+ 
   return (
     <NavigationContainer>
       <Stack.Navigator 
