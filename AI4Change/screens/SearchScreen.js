@@ -16,6 +16,7 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
     longitudeDelta: 0.0421,
   });
   const [marker, setMarker] = useState(null);
+  const [currentDetails, setCurrentDetails] = useState(null);
 
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -26,7 +27,8 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
     return <AppLoading />;
   }
 
-  const handleSearch = (data, details) => {
+  // const handleSearch = (data, details) => {
+    const handleSearch = (details) => {
     if (details) {
       const { lat, lng } = details.geometry.location;
       setRegion({
@@ -52,6 +54,12 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
       <GooglePlacesAutocomplete
         placeholder="Enter location"
         fetchDetails={true}
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(details);
+          setCurrentDetails(details)
+        }}
+  
         query={{
           key: GOOGLE_MAPS_API_KEY,
           language: 'en',
@@ -68,7 +76,7 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
           return (
            <View>
             <Text style={{ fontSize: 14 }}>{title}</Text>
-            <Text style={{ fontSize: 14 }}>{address}</Text>
+            <Text style={{ fontSize: 12 }}>{address}</Text>
            </View>
            );
           }}
@@ -76,6 +84,9 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
         onFail={(error) => console.error(error)}
       />
     </View>
+          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>handleSearch(currentDetails)}>
+            <Text style={commonStyles.backButtonText}>Search</Text>
+          </TouchableOpacity>
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
           </MapView>
