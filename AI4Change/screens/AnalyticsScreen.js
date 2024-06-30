@@ -5,6 +5,7 @@ import axios from 'axios';
 import { IP_ADDRESS } from '../config.js';
 
 const MyLineChart = () => {
+  const { lat, lng } = route.params;
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentGraphIndex, setCurrentGraphIndex] = useState(0);
@@ -16,7 +17,7 @@ const MyLineChart = () => {
   const fetchData = async () => {
     try {
       const bodyFormData = new FormData();
-      bodyFormData.append('LonLatData', JSON.stringify([34.2, 22.9]));
+      bodyFormData.append('LonLatData', JSON.stringify([lng, lat]));
 
       const response = await axios.post(`http://${IP_ADDRESS}/data`, bodyFormData, {
         headers: { "Content-Type": "multipart/form-data" },

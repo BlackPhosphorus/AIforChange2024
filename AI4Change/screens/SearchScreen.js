@@ -83,12 +83,14 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
            </View>
            );
           }}
-
         onFail={(error) => console.error(error)}
       />
     </View>
           <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>handleSearch(currentDetails)}>
             <Text style={commonStyles.backButtonText}>Search</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>navigation.navigate("AnalyticsScreen",{lat:latitude, lng:longitude})}>
+            <Text style={commonStyles.backButtonText}>Confirm</Text>
           </TouchableOpacity>
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
