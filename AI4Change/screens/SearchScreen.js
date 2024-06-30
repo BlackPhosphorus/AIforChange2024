@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, ImageBackground, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
-import { LinearGradient } from 'expo-linear-gradient';
 import { commonStyles } from '../styles';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyAkVA8_-D5-LoJXFaFSuG3z6nBL4Wmkp7E';
 
-const SearchScreen = ({ navigation }) => {
+const SearchScreen = ({ navigation, showLoadingScreen }) => {
   const [region, setRegion] = useState({
     latitude: -6.200000,
     longitude: 106.816666,
@@ -28,52 +27,53 @@ const SearchScreen = ({ navigation }) => {
   }
 
   const handleSearch = (data, details) => {
-    const { lat, lng } = details.geometry.location;
-    setRegion({
-      latitude: lat,
-      longitude: lng,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    });
-    setMarker({
-      latitude: lat,
-      longitude: lng,
-    });
+    if (details) {
+      const { lat, lng } = details.geometry.location;
+      setRegion({
+        latitude: lat,
+        longitude: lng,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+      setMarker({
+        latitude: lat,
+        longitude: lng,
+      });
+    }
   };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ImageBackground source={require('../assets/bg4.jpg')} style={styles.backgroundImage}>
-        <LinearGradient colors={['rgba(0,0,0,0.5)', 'transparent']} style={styles.gradient}>
-          <View style={styles.container}>
-            <View style={styles.inputContainer}>
-              <GooglePlacesAutocomplete
-                placeholder="Choose area"
-                onPress={handleSearch}
-                query={{
-                  key: GOOGLE_MAPS_API_KEY,
-                  language: 'en',
-                }}
-                styles={{
-                  textInputContainer: styles.textInputContainer,
-                  textInput: styles.textInput,
-                  predefinedPlacesDescription: {
-                    color: '#1faadb',
-                  },
-                }}
-                fetchDetails={true}
-                enablePoweredByContainer={false}
-                listViewDisplayed="auto"
-              />
-            </View>
-            <MapView style={styles.map} region={region}>
-              {marker && <Marker coordinate={marker} />}
-            </MapView>
-            <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => navigation.goBack()}>
-              <Text style={commonStyles.backButtonText}>Back</Text>
-            </TouchableOpacity>
+        <View style={styles.container}>
+          <View style={styles.inputContainer}>
+            <GooglePlacesAutocomplete
+              placeholder="Enter location"
+              minLength={2}
+              fetchDetails={true}
+              onPress={handleSearch}
+              query={{
+                key: GOOGLE_MAPS_API_KEY,
+                language: 'en',
+              }}
+              styles={{
+                textInputContainer: styles.textInputContainer,
+                textInput: styles.textInput,
+                predefinedPlacesDescription: {
+                  color: '#1faadb',
+                },
+              }}
+              debounce={200}
+              enablePoweredByContainer={false}
+            />
           </View>
-        </LinearGradient>
+          <MapView style={styles.map} region={region}>
+            {marker && <Marker coordinate={marker} />}
+          </MapView>
+          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={() => showLoadingScreen(navigation, 'Home')}>
+            <Text style={commonStyles.backButtonText}>Back</Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </TouchableWithoutFeedback>
   );
@@ -83,9 +83,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover',
-  },
-  gradient: {
-    flex: 1,
   },
   container: {
     flex: 1,
