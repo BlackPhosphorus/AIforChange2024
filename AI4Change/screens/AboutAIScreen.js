@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Button, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Button, ImageBackground,TouchableOpacity } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 
