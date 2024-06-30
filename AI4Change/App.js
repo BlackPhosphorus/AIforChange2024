@@ -17,7 +17,7 @@ const App = () => {
   console.log(`http://${IP_ADDRESS}/data`);
 
   var bodyFormData = new FormData();
-  bodyFormData.append('LonLatData', JSON.stringify([90.0, 25.0]));
+  bodyFormData.append('LonLatData', JSON.stringify([34.2, 22.9]));
 
   axios({
       method: "post",
