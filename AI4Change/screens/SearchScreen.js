@@ -7,7 +7,7 @@ import AppLoading from 'expo-app-loading';
 import { LinearGradient } from 'expo-linear-gradient';
 import { commonStyles } from '../styles';
 
-const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
+const GOOGLE_MAPS_API_KEY = 'AIzaSyAkVA8_-D5-LoJXFaFSuG3z6nBL4Wmkp7E';
 
 const SearchScreen = ({ navigation }) => {
   const [region, setRegion] = useState({
