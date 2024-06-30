@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Dimensions, ActivityIndicator, ScrollView, Button } from 'react-native';
+import { View, Text, Dimensions, ActivityIndicator, ScrollView, Button, TouchableOpacity } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import axios from 'axios';
 import { IP_ADDRESS } from '../config.js';
+import { commonStyles } from '../styles.js';
 
 const MyLineChart = ({navigation, route}) => {
   const { lat, lng } = route.params;
@@ -182,8 +183,23 @@ const MyLineChart = ({navigation, route}) => {
           </>
         ) : null}
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-          <Text style={styles.buttonText}>Back</Text>
+      
+      <TouchableOpacity style={{
+    backgroundColor: '#F9A825',
+    borderRadius: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginLeft : 40,
+    marginVertical: 10,
+    width: '80%',
+    alignItems: 'center',
+  }} onPress={() => navigation.goBack()}>
+          <Text style={{
+            color: '#FFFFFF',
+            fontSize: 18,
+            fontWeight: 'bold',
+            fontFamily: 'Poppins_600SemiBold',
+          }}>Back</Text>
         </TouchableOpacity>
     </ScrollView>
   );
