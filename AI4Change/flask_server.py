@@ -1,14 +1,20 @@
 from flask import Flask, request, jsonify
-from transformers import AutoTokenizer, AutoModel
 import torch
 import json
 from flask_cors import CORS
+import ujson
 
 app = Flask(__name__)
 
 CORS(app)
 
-wtr_content_data = json.load(open('data/wtr_content.json'))
+wtr_content_data = ujson.load(open('data/wtr_content.json'))
+air_temps_data = ujson.load(open('data/wtr_content.json'))
+wtr_content_data = ujson.load(open('data/wtr_content.json'))
+wtr_content_data = ujson.load(open('data/wtr_content.json'))
+wtr_content_data = ujson.load(open('data/wtr_content.json'))
+wtr_content_data = ujson.load(open('data/wtr_content.json'))
+
 
 @app.route('/data', methods=['GET'])
 def get_data():
