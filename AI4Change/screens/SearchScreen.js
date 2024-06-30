@@ -86,12 +86,16 @@ const SearchScreen = ({ navigation, showLoadingScreen }) => {
         onFail={(error) => console.error(error)}
       />
     </View>
-          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>handleSearch(currentDetails)}>
-            <Text style={commonStyles.backButtonText}>Search</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>navigation.navigate("AnalyticsScreen",{lat:latitude, lng:longitude,})}>
-            <Text style={commonStyles.backButtonText}>Confirm</Text>
-          </TouchableOpacity>
+
+          <View style={styles.rowContainer}>
+            <TouchableOpacity style={commonStyles.backButtonContainer} onPress={()=>handleSearch(currentDetails)}>
+              <Text style={commonStyles.backButtonText}>Search</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[commonStyles.backButtonContainer,{marginLeft:20}]} onPress={()=>navigation.navigate("AnalyticsScreen",{lat:latitude, lng:longitude,})}>
+              <Text style={commonStyles.backButtonText}>Confirm</Text>
+            </TouchableOpacity>
+          </View>
+
           <MapView style={styles.map} region={region}>
             {marker && <Marker coordinate={marker} />}
           </MapView>
@@ -144,6 +148,12 @@ const styles = StyleSheet.create({
   row:{
     width:'95%',
     
+  },
+  rowContainer:{
+    flexDirection:'row',
+    width:'50%',
+    justifyContent:'center',
+    paddingBottom:5,
   }
 });
 

@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native';
 
 export const commonStyles = StyleSheet.create({
   backButtonContainer: {
-    marginTop: 20,
+  
     width: '90%',
     borderRadius: 10,
     backgroundColor: '#9575CD',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 10,
+  paddingVertical: 10,
   },
   backButtonText: {
     color: '#FFFFFF',
